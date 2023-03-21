@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/purchase_order_form.css')}}" />
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='images/logo.png')}}">
+    <title>Purchase order</title>
+  </head>
+
+  <body>
+    <div class="page" size="A4">
+      <div class="p-3">
+        <section class="top-content bb d-flex justify-content-between">
+          <div class="logo">
+            <img src="{{url_for('static', filename='images/logo.png')}}" alt="" class="img-fluid" />
+          </div>
+          <div class="top-left">
+            <div class="graphic-path">
+              <p>PURCHASE ORDER</p>
+            </div>
+            <div class="position-relative">
+              <p>PO NUMBER: <span>{{ po.po_number }}</span></p>
+            </div>
+            <div class="position-relative">
+              <p>CREATED DATE: <span>{{ po.created_date }}</span></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="store-user mt-3">
+          <div class="col-12">
+            <div class="row bb pb-3">
+              <div class="col-12 bb pb-3">
+                  <p>BU</p>
+                  <h5>{{ po.bu }}</h5>
+                  <p class="tax_id">Tax ID: <p style="display: inline; font-weight: normal;">{{ po.bu_tax_id }}</p></p>
+              </div>
+
+              <div class="col-12 mt-3">
+                <p>SUPPLIER</p>
+                <h5>{{ po.supplier_name }}</h5>
+                <p class="tax_id">Tax ID: <p style="display: inline; font-weight: normal;">{{ po.supplier_tax_id }}</p></p>
+              </div>
+            </div>
+            <div class="row extra-info pt-3">
+              <div class="col-12">
+                  <p class="po_detail mb-2">Description: <span>{{ po.description }}</span></p>
+                  <p class="po_detail mb-2">Total amount + VAT: <span>{{ po.total_amount }} ({{ po.currency_code }})</span></p>
+                  <p class="po_detail mb-2">Payment term: <span>{{ po.payment_term_name }}</span></p>
+                  <p class="po_detail mb-2">Approved by: <span>{{ po.approver }}</span></p>
+                  <p class="po_detail mb-2">Approved date: <span>{{ po.approved_date }}</span></p>
+                  <p class="po_detail mb-2">Status: <span>{{ po.status }}</span></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
